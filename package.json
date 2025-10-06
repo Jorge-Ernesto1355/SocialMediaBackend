@@ -1,0 +1,49 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node --trace-warnings"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^4.11.0",
+    "algolia": "^0.0.0",
+    "algoliasearch": "^4.22.1",
+    "bcrypt": "^5.1.1",
+    "class-validator": "^0.14.0",
+    "cloudinary": "^1.40.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-expeditious": "^5.1.1",
+    "express-fileupload": "^1.4.1",
+    "express-validator": "^7.0.1",
+    "franc": "^6.2.0",
+    "fs-extra": "^11.1.1",
+    "http": "^0.0.1-security",
+    "http-error": "^0.0.6",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "langdetect": "^0.2.1",
+    "moment": "^2.29.4",
+    "mongoose": "^7.5.2",
+    "mongoose-paginate-v2": "^1.7.4",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.5",
+    "redis": "^4.6.13",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "web-push": "^3.6.6",
+    "zod": "^3.22.3"
+  }
+}
