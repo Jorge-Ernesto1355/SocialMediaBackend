@@ -18,12 +18,12 @@ const cookieParser = require("cookie-parser");
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 3001;
+    this.port = process.env.PORT || 3000;
     this.ACCEPTED_ORIGINS = ["http://localhost:3000"];
     this.middlewares();
     this.router();
     this.DBconnection();
-    this.socketIo();
+    
   }
 
   middlewares() {
@@ -106,25 +106,17 @@ class Server {
     this.app.use("/api/v1/conversation", ConversationRouter);
     this.app.use("/api/v1/message", MessageRouter);
     this.app.use("/api/v1/story", StoryRouter);
+    this.app.use('test', (req, res) => {
+      res.json('API is working');
+    });
   }
 
-  socketIo() {
-    const server = http.createServer(this.app);
-    socketIo(server);
-    server
-      .listen(3002, () => {
-        console.log("ejecutando en:", 3002);
-      })
-      .on("error", (err) => {
-        console.error("Server error:", err);
-        // Restart the server here
-      });
-  }
+
 
   listen(portParams) {
     const port = portParams ? portParams : this.port;
     this.app
-      .listen(port, () => {
+      .listen(port,"0.0.0.0", () => {
         console.log("ejecutando en:", port);
       })
       .on("error", (err) => {
