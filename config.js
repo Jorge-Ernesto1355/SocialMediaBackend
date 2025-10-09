@@ -18,7 +18,7 @@ const cookieParser = require("cookie-parser");
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 3000;
+    this.port = process.env.PORT || 10000;
     this.ACCEPTED_ORIGINS = ["http://localhost:3000"];
     this.middlewares();
     this.router();
@@ -40,14 +40,15 @@ class Server {
     this.app.use(
       cors({
         origin: (origin, callback) => {
-          if (this.ACCEPTED_ORIGINS.includes(origin)) {
-            return callback(null, true);
+           return callback(null, true);
+          /*
+          if (!origin) return callback(null, true);
+          if (this.ACCEPTED_ORIGINS.indexOf(origin) === -1) {
+            var msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+            return callback(new Error(msg), false);
           }
-          if (!origin) {
-            return callback(null, true);
-          }
-
-          return callback(new Error("Not Allowed by CORS"));
+          return callback(null, true);
+          */
         },
       })
     );
@@ -116,7 +117,7 @@ class Server {
   listen(portParams) {
     const port = portParams ? portParams : this.port;
     this.app
-      .listen(port,"0.0.0.0", () => {
+      .listen(port, () => {
         console.log("ejecutando en:", port);
       })
       .on("error", (err) => {
