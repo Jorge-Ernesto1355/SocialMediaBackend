@@ -1,14 +1,12 @@
 const mongoose = require('mongoose')
-
+const  dotenv =  require('dotenv')
+dotenv.config()
 const connectDB = async ()=> {
-    const {MONGO_DB_URI, MONGO_DB_URI_TEST, NODE_ENV} = process.env
 
-    const connectioString = NODE_ENV === 'test' 
-    ? MONGO_DB_URI_TEST
-    : MONGO_DB_URI
     try{
-        await mongoose.connect('mongodb://0.0.0.0:27017/socialmediaTest')
-        
+       
+        await mongoose.connect(process.env.MONGO_URI)
+       
     }catch(e){
         console.log(e)
     }
