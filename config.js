@@ -23,6 +23,7 @@ class Server {
     this.middlewares();
     this.router();
     this.DBconnection();
+    this.connectSocket()
     
   }
 
@@ -107,11 +108,21 @@ class Server {
     this.app.use("/api/v1/conversation", ConversationRouter);
     this.app.use("/api/v1/message", MessageRouter);
     this.app.use("/api/v1/story", StoryRouter);
-    this.app.use('test', (req, res) => {
-      res.json('API is working');
-    });
+  
   }
 
+
+   connectSocket(){
+    try
+    {    
+      const server = http.createServer(this.app);
+      socketIo(server);
+      console.log("Socket.io connected");
+    } catch (error) {
+      console.error("Socket connection error:", error);
+    }
+    
+  }
 
 
   listen(portParams) {
