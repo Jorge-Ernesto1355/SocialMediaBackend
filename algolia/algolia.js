@@ -1,7 +1,9 @@
 const Algolia = require("algoliasearch")
+const dotenv = require("dotenv")
+dotenv.config()
 
-const ALGOLIA_APP_ID = 'PZG4Z8HDRA' || process.env.ALGOLIA_APP_ID
-const ALGOLIA_ADMIN_KEY = 'f4018b1d9b79e8cedc28fae6fb2bb44a' || process.env.ALGOLIA_ADMIN_KEY
+const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID
+const ALGOLIA_ADMIN_KEY =  process.env.ALGOLIA_ADMIN_KEY
 
 const algoliaClient = new Algolia(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
 
