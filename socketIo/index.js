@@ -11,14 +11,16 @@ const isValidObjectId = require("../libs/isValidObjectId");
 const Message = require("../messages/domain/Message");
 
 module.exports = function socketIo(server) {
-  const io = new SocketServer(server, {
+  
+   const io = new SocketServer(server, {
     cors: {
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST"],
+      origin: '*', // allow your client origin here if needed
+      methods: ['GET', 'POST'],
     },
   });
 
   io.use((socket, next) => {
+   
     const token = socket.handshake.query.token;
 
     try {
@@ -36,6 +38,7 @@ module.exports = function socketIo(server) {
   });
 
   io.on("connection", async function (socket) {
+    console.log("a user connected")
     const userId = socket.handshake.query.userId;
     console.log(
       "socket connected ---- ",
