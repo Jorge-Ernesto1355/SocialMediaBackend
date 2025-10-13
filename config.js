@@ -128,17 +128,7 @@ class Server {
   }
 
 
-  listen(portParams) {
-    const port = portParams ? portParams : this.port;
-    this.app
-      .listen(port, () => {
-        console.log("ejecutando en:", port);
-      })
-      .on("error", (err) => {
-        console.error("Server error:", err);
-        // Restart the server here
-      });
-  }
+ 
 }
 
 module.exports = { Server };
