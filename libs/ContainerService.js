@@ -18,7 +18,7 @@ module.exports = class ContainerService {
             } 
 
             const reactions = await ReactionService.getAll({containerId, type, limit: container?.reactions?.length, page:1})
-            console.log(reactions)
+            
             if(reactions.error){
                 throw new Error(reactions.error.message)
             }
