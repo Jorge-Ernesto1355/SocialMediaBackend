@@ -19,7 +19,7 @@ class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || 10000;
-    this.ACCEPTED_ORIGINS = ["http://localhost:3000"];
+    this.ACCEPTED_ORIGINS = ["*"];
     this.middlewares();
     this.router();
     this.DBconnection();
@@ -117,7 +117,10 @@ class Server {
     {    
       const server = http.createServer(this.app);
       socketIo(server);
-      console.log("Socket.io connected");
+      server.listen(4000, () => {
+        console.log("Socket.io server listening on port 4000");
+      });
+      
     } catch (error) {
       console.error("Socket connection error:", error);
     }
