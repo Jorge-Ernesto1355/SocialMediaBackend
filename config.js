@@ -23,7 +23,10 @@ class Server {
     this.middlewares();
     this.router();
     this.DBconnection();
-    this.connectSocket()
+
+    this.server = http.createServer(this.app);
+   
+
     
   }
 
@@ -112,18 +115,15 @@ class Server {
   }
 
 
-   connectSocket(){
-    try
-    {    
-      const server = http.createServer(this.app);
-      socketIo(server);
-     server.listen(this.port, () => console.log(`🚀 Servidor (API + Socket.io) en puerto ${PORT}`));
-      
-    } catch (error) {
-      console.error("Socket connection error:", error);
-    }
-    
+  listen() {
+    socketIo(this.server)
+
+    this.server.listen(this.port, () => {
+      console.log(`🚀 Servidor (API + Socket.io) en puerto ${this.port}`);
+    });
   }
+    
+  
 
 
  
