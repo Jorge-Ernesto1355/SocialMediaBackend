@@ -117,9 +117,7 @@ class Server {
     {    
       const server = http.createServer(this.app);
       socketIo(server);
-      server.listen(4000, () => {
-        console.log("Socket.io server listening on port 4000");
-      });
+     server.listen(this.port, () => console.log(`🚀 Servidor (API + Socket.io) en puerto ${PORT}`));
       
     } catch (error) {
       console.error("Socket connection error:", error);
